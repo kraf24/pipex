@@ -6,11 +6,11 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:35:28 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:12:34 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:16:08 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 #include "bonus_pipex.h"
 
 int	fd_opener(char *argv, int i)
