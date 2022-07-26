@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/05/02 13:14:51 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/05/09 17:41:28 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
+#include "libft.h"
 
-int	error(char *msg)
+void	*ft_calloc(size_t count, size_t size)
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
+	void	*ptr;
+	size_t	res;
 
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
-	return (0);
+	res = (count * size);
+	if (size != 0 && res / size != count)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, size * count);
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:37:44 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/21 13:33:25 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/25 21:06:53 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	**path(char **envp)
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	pipex_data	pipex;
+	t_pipex_data	pipex;
 
 	if (argc != 5)
 		return (error(ERR_INPUT));

@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/04/25 14:21:16 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/05/06 15:40:31 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
+#include "libft.h"
 
-int	error(char *msg)
+void	*ft_memset(void *b, int c, size_t size)
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
+	size_t			count;
+	unsigned char	*temp;
 
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
-	return (0);
+	count = 0;
+	temp = (unsigned char *)b;
+	while (count < size)
+	{
+		temp[count] = c;
+		count++;
+	}
+	return (temp);
 }

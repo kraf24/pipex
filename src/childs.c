@@ -6,14 +6,14 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:44:57 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/20 19:26:39 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/26 18:54:30 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "pipex.h"
 
-char	*command(pipex_data pipex, char *command)
+char	*command(t_pipex_data pipex, char *command)
 {
 	int		i;
 	char	*result;
@@ -32,10 +32,11 @@ char	*command(pipex_data pipex, char *command)
 		free(result);
 		i++;
 	}
+	free(data.cmd_path);
 	return (0);
 }
 
-void	first_child_process(pipex_data pipex, char *argv[], char *envp[])
+void	first_child_process(t_pipex_data pipex, char *argv[], char *envp[])
 {
 	dup2(pipex.pipes[1], STDOUT_FILENO);
 	close(pipex.pipes[0]);
@@ -49,12 +50,11 @@ void	first_child_process(pipex_data pipex, char *argv[], char *envp[])
 		error(ERR_CMD);
 		exit(1);
 	}
-	execve(pipex.comand ,pipex.cmd ,envp);
+	execve(pipex.comand, pipex.cmd, envp);
 }
 
-void second_child_process(pipex_data pipex, char *argv[], char *envp[])
+void	second_child_process(t_pipex_data pipex, char *argv[], char *envp[])
 {
-
 	dup2(pipex.pipes[0], STDIN_FILENO);
 	close(pipex.pipes[1]);
 	dup2(pipex.outfile, STDOUT_FILENO);
@@ -67,5 +67,6 @@ void second_child_process(pipex_data pipex, char *argv[], char *envp[])
 		error(ERR_CMD);
 		exit(1);
 	}
-	execve(pipex.comand,pipex.cmd, envp);
+	execve(pipex.comand, pipex.cmd, envp);
+
 }

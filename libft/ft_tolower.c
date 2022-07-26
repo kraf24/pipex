@@ -1,34 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/04/25 17:15:22 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/04/28 14:12:13 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
-
-int	error(char *msg)
+int	ft_tolower(int c)
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
-
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
-	return (0);
+	if (c > 64 && c < 91)
+	{
+		c += 32;
+		return (c);
+	}
+	else
+	{
+		return (c);
+	}
 }

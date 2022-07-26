@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/04/25 12:49:35 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/04/28 14:12:50 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
-
-int	error(char *msg)
+int	ft_isascii(int c)
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
-
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
-	return (0);
+	if (c >= 0 && c <= 127)
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }

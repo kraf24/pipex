@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/05/01 18:49:02 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/05/06 15:42:52 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
+#include "libft.h"
 
-int	error(char *msg)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
+	size_t		o;
+	size_t		i;
+	char		*str;
 
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
-	return (0);
+	i = 0;
+	if (!s || !f)
+		return (0);
+	o = ft_strlen(s);
+	str = (char *)malloc(sizeof(char) * (o + 1));
+	if (!str)
+		return (NULL);
+	while (i < o)
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

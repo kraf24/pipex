@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/05/05 13:00:38 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/05/06 22:04:53 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
+#include "libft.h"
 
-int	error(char *msg)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
+	t_list	*temp;
 
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
-	return (0);
+	temp = NULL;
+	if (*lst)
+	{
+		temp = ft_lstlast(*lst);
+		temp->next = new;
+	}
+	else
+		*lst = new;
 }

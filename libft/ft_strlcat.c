@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/04/25 15:20:27 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/05/06 18:42:58 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
+#include "libft.h"
 
-int	error(char *msg)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
+	size_t	i;
+	size_t	k;
+	size_t	a;
+	size_t	b;
 
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
-	return (0);
+	i = ft_strlen(dst);
+	a = ft_strlen(src);
+	k = 0;
+	b = i;
+	if (size == 0)
+		return (a);
+	if (size < b)
+		return (a + size);
+	while (src[k] != '\0' && (i + 1) < size)
+	{
+		dst[i++] = src[k++];
+	}
+	dst[i] = '\0';
+	return (a + b);
 }

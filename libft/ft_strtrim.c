@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/04/27 15:25:04 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/05/04 17:58:48 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
+#include "libft.h"
 
-int	error(char *msg)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
+	size_t	size_s;
+	char	*temp;
 
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
-	return (0);
+	while (!s1 || !set)
+		return (0);
+	while (*s1 && ft_strchr(set,*s1))
+		s1++;
+	size_s = ft_strlen(s1);
+	while (size_s && ft_strchr(set, s1[size_s]))
+		size_s--;
+	temp = ft_substr(s1, 0, size_s + 1);
+	return (temp);
 }

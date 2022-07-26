@@ -6,21 +6,24 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:35:28 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/21 16:17:58 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/25 21:12:34 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 #include "bonus_pipex.h"
 
-int fd_opener(char *argv, int i)
+int	fd_opener(char *argv, int i)
 {
-	int fd;
+	int	fd;
 
-	if (i == 'i')
+	fd = -1;
+	if (i == 'c')
 		fd = open(argv, O_RDONLY);
-	else if (i == 'o')
+	else if (i == 'a')
 		fd = open(argv, O_TRUNC | O_RDWR | O_CREAT, 0777);
+	else if (i == 't')
+		fd = open(argv, O_APPEND | O_RDWR | O_CREAT, 0777);
 	if (fd < 0)
 		err_msg(ERR_INFILE);
 	return (fd);
@@ -39,7 +42,7 @@ void	free_2dstr(char **str)
 	free(str);
 }
 
-char	**path(char **envp) //uesed
+char	**path(char **envp)
 {
 	int		i;
 	char	**path;
@@ -51,7 +54,7 @@ char	**path(char **envp) //uesed
 	return (path);
 }
 
-char	*command(pipex_data pipex, char *command)
+char	*command(t_pipex_data pipex, char *command)
 {
 	int		i;
 	char	*result;

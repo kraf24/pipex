@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:10:51 by gpinchuk         ###   ########.fr       */
+/*   Created: 2022/04/25 17:29:47 by gpinchuk          #+#    #+#             */
+/*   Updated: 2022/05/06 17:48:52 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include "bonus_pipex.h"
+#include "libft.h"
 
-int	error(char *msg)
+char	*ft_strrchr(const char *s, int c)
 {
-	write(2, msg, ft_strlen(msg));
-	return (1);
-}
+	int		count;
+	char	*b;
 
-void	err_msg(char *err)
-{
-	perror(err);
-	exit(0);
-}
-
-int	main(int argc, char *argv[], char *envp[])
-{
-	if (argc < 5)
-		err_msg("asd");
-	pipex(argc, argv, envp);
+	count = 0;
+	while (*s)
+	{
+		if (*s == (unsigned char)c)
+		{
+			b = (char *)s;
+			++count;
+		}
+		s++;
+	}
+	if (count > 0)
+	{
+		return (b);
+	}
+	if (*s == (unsigned char)c)
+		return ((char *)s);
 	return (0);
 }
