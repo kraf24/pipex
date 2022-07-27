@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 17:50:36 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:02:10 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:41:22 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ char		*ft_get_new_string(char *string);
 char		*ft_new_string(char *string);
 size_t		ft_strlcpy_get(char *dst, const char *src, size_t dstsize);
 char		*ft_strchr_get(const char *s, int c);
+char		*ft_strcpy(char *dest, char *src);
 
 #endif

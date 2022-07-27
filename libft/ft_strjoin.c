@@ -6,25 +6,11 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 12:25:15 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/05/10 18:34:40 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/27 17:41:53 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_strcpy(char *dest, char *src)
-{
-	int	count;
-
-	count = 0;
-	while (src[count] != '\0')
-	{
-		dest[count] = src[count];
-		count++;
-	}
-	dest[count] = '\0';
-	return (dest);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

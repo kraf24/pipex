@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:44:57 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/26 18:54:30 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/26 19:21:47 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	*command(t_pipex_data pipex, char *command)
 		free(result);
 		i++;
 	}
-	free(data.cmd_path);
 	return (0);
 }
 

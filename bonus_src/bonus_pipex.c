@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:35:51 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/26 19:01:33 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/27 18:11:32 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 void execute(t_pipex_data data, char *envp[])
 {
 	data.comand = command(data, data.cmd[0]);
+	if (!data.comand)
+	{
+		free_2dstr(data.cmd);
+		close(data.outfile);
+		error(ERR_CMD);
+		exit(1);
+	}
 	execve(data.comand, data.cmd, envp);
 }
 
@@ -23,17 +30,23 @@ void proces(t_pipex_data data, char *lim)
 {
 	char *line;
 
-	while (ft_strncmp(line, lim, ft_strlen(lim) + 1) != 10)
+	ft_putstr_fd("here_doc> ", 1);
+	line = get_next_line(0);
+	while (line)
 	{
-		ft_putstr_fd("here_doc> ", 1);
-		line = get_next_line(0);
-		// free(line);
+    	if (ft_strncmp(line, lim, ft_strlen(lim) + 1) == 10)
+    	{
+    		free(line);
+			close(data.pipes[1]);
+			close(data.outfile);
+    		exit(1);
+    	}
 		write(data.pipes[1], line, ft_strlen(line));
 		write(data.pipes[1], "\n", ft_strlen(line));
+		ft_putstr_fd("here_doc> ", 1);
+    	free(line);
+   		line = get_next_line(0);
 	}
-	// free(line);
-	exit(1);
-	exit(1);
 }
 
 void LIMITER(t_pipex_data data, char *argv[])
@@ -44,7 +57,10 @@ void LIMITER(t_pipex_data data, char *argv[])
 	if (data.child == -1)
 		err_msg(ERR_PIPE);
 	if(data.child == 0)
+	{
+		close(data.pipes[0]);
 		proces(data, argv[2]);
+	}
 	else
 	{
 		close(data.pipes[1]);
@@ -63,11 +79,11 @@ void arr_execute(t_pipex_data data, char *argv, char *envp[])
 		err_msg(ERR_PIPE);
 	if (data.child == 0)
 	{
+		close(data.pipes[0]);
 		if ((dup2(data.pipes[1], STDOUT_FILENO)) == -1)
 			err_msg(ERR_OUTFILE);
-		close(data.pipes[0]);
-		data.cmd = ft_split(argv, ' ');
 		close(data.pipes[1]);
+		data.cmd = ft_split(argv, ' ');
 		execute(data, envp);
 	}
 	else
