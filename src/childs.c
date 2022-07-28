@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:44:57 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/26 19:21:47 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/28 20:49:18 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,4 @@ void	second_child_process(t_pipex_data pipex, char *argv[], char *envp[])
 		exit(1);
 	}
 	execve(pipex.comand, pipex.cmd, envp);
-
 }

@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 15:38:33 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 19:38:52 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/28 18:19:12 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,20 @@ char	*ft_strjoin_get(char *string, char *buff)
 
 	if (!string)
 	{
-		string = (char *)malloc(sizeof(char));
+		string = (char *)calloc(sizeof(char), 1);
 		string[0] = '\0';
 	}
 	if (!string || !buff)
 		return (NULL);
 	n1 = ft_strlen(string);
 	len = ft_strlen(buff) + (n1) + 1;
-	str = (char *)malloc(len * sizeof(char));
+	str = (char *)calloc(len, sizeof(char));
 	if (str == NULL)
 	{
 		return (NULL);
 	}
-	ft_strlcpy(str, (char *)string, ft_strlen(string) + 1);
-	ft_strlcpy(&str[n1], (char *)buff, ft_strlen(buff) + 1);
+	ft_strlcpy(str, string, ft_strlen(string) + 1);
+	ft_strlcpy(&str[n1], buff, ft_strlen(buff) + 1);
 	free(string);
 	return (str);
 }
@@ -46,8 +46,8 @@ char	*ft_read_from_file(int fd, char *left)
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
 		return (NULL);
-	size = 1;
-	while (!(ft_strchr_get(left, '\n')) && size)
+	size = 0;
+	while (!(ft_strchr_get(left, '\n')))
 	{
 		size = read(fd, buff, BUFFER_SIZE);
 		if (size == -1)

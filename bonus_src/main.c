@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 13:25:50 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/26 19:16:12 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/28 20:23:30 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	error(char *msg)
 {
 	write(2, msg, ft_strlen(msg));
-	return (1);
+	exit(0);
 }
 
 void	err_msg(char *err)
@@ -28,7 +28,7 @@ void	err_msg(char *err)
 int	main(int argc, char *argv[], char *envp[])
 {
 	if (argc < 5)
-		err_msg("asd");
+		error("Invalid number of arguments");
 	pipex(argc, argv, envp);
 	return (0);
 }

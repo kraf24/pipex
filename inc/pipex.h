@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 19:39:35 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:06:47 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/28 20:21:13 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # include <sys/wait.h>
 
-# define ERR_INPUT "Invalid number of arguments\n"
+# define ERR_INPUT "Invalid number of arguments"
 # define ERR_INFILE "file doesn't exist hihihihihihahahahah"
 # define ERR_OUTFILE "no rules for outfile"
 # define ERR_CMD "no such command"

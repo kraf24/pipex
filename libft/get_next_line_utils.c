@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 15:03:15 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/25 21:03:08 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/28 20:50:06 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ char	*ft_new_string(char *string)
 	return (str);
 }
 
+// ft_get_new_string error free(new_str); 
+
 char	*ft_get_new_string(char *string)
 {
 	size_t	size;
@@ -44,12 +46,13 @@ char	*ft_get_new_string(char *string)
 		free(string);
 		return (NULL);
 	}
-	new_str = (char *)malloc(sizeof(char) * (size - i));
+	new_str = (char *)calloc(sizeof(char), (size - i));
 	if (!new_str)
 		return (NULL);
 	i++;
 	ft_strlcpy(new_str, &string[i], size - i + 1);
 	free(string);
+	free(new_str);
 	return (new_str);
 }
 
