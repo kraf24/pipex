@@ -6,7 +6,7 @@
 /*   By: gpinchuk <gpinchuk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/07 15:03:15 by gpinchuk          #+#    #+#             */
-/*   Updated: 2022/07/28 20:50:06 by gpinchuk         ###   ########.fr       */
+/*   Updated: 2022/07/30 16:53:18 by gpinchuk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ char	*ft_new_string(char *string)
 	return (str);
 }
 
-// ft_get_new_string error free(new_str); 
 
 char	*ft_get_new_string(char *string)
 {
@@ -41,7 +40,7 @@ char	*ft_get_new_string(char *string)
 	size = ft_strlen(string);
 	while (string[i] && string[i] != '\n')
 		i++;
-	if (!string[i])
+	if (!string[i] || !string[i + 1])
 	{
 		free(string);
 		return (NULL);
